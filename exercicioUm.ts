@@ -42,6 +42,8 @@ function imprimirNumeros(limite: number) {
 
     const unidades = ['zero', 'um', 'dois', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove']
     const unidadesDez = ['dez', 'onze', 'doze', 'treze', 'quatorze', 'quinze', 'dezesseis', 'dezessete', 'dezoito', 'dezenove']
+    const dezenas = ['vinte', 'trinta', 'quarenta', 'cinquenta', 'sessenta', 'setenta', 'oitenta', 'noventa']
+    const dezenasNum = [20, 30, 40, 50, 60, 70, 80, 90]
     let resultado = ''
 
     for (let i = 0; i < limite+1; i++) {
@@ -50,36 +52,15 @@ function imprimirNumeros(limite: number) {
             resultado = unidades[i]
         } else if (i >= 10 && i <= 19){
             resultado = unidadesDez[i-10]
-        } else if (i >= 20 && i <= 29) {
-            resultado =  (i===20) ? "vinte" : "vinte e " + unidades[i-20]
-        } else if (i >= 30 && i <= 39) {
-            resultado =  (i===20) ? "trinta" : "trinta e " + unidades[i-30]
-        } else if (i >= 40 && i <= 49) {
-            resultado =  (i===20) ? "quarenta" : "quarenta e " + unidades[i-40]
-        } else if (i >= 50 && i <= 59) {
-            resultado =  (i===20) ? "cinquenta" : "cinquenta e " + unidades[i-50]
-        } else if (i >= 60 && i <= 69) {
-            resultado =  (i===20) ? "sessenta" : "sessenta e " + unidades[i-60]
-        } else if (i >= 70 && i <= 79) {
-            resultado =  (i===20) ? "setenta" : "setenta e " + unidades[i-70]
-        } else if (i >= 80 && i <= 89) {
-            resultado =  (i===20) ? "oitenta" : "oitenta e " + unidades[i-80]
-        } else if (i >= 90 && i <= 99) {
-            resultado =  (i===20) ? "noventa" : "noventa e " + unidades[i-90]
+        } else if (i>= 20 && i <= 99) {
+            let dezenaPura = Math.floor(i / 10) * 10;
+            let indiceAuxiliar = Math.floor(i / 10) - 2;
+
+            resultado = (i===dezenaPura) ? dezenas[indiceAuxiliar] : dezenas[indiceAuxiliar] + " e " + unidades[i-dezenaPura]
         } else {
             resultado = "cem"
         }
 
-        // if (limite > 9 && limite < 21){
-        //     resultado = unidadesDez[i - 10]
-        // } else {
-        //     resultado = unidades[i]
-        // }
-
         console.log(resultado)
     }
 }
-
-// for (let i = 0; i < 10; i++) {
-// console.log(i)
-// }
